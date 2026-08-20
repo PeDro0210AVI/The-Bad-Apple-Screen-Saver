@@ -1,0 +1,14 @@
+# From direnv 
+# .envrc (remove it if needed)
+.direnv
+
+# Makefile build dir
+bin/
+build/
+
+# Nix result binary
+result/
+
+# for clangd
+.cache
+compile_commands.json
