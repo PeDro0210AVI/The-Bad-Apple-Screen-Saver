@@ -12,6 +12,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
+        "x86_64-linux"
       ];
       flake = {
         templates.default.path = ./.;
@@ -29,10 +30,26 @@
           nativeBuildInputs = with pkgs; [ ];
           buildInputs = with pkgs; [
             libc
+            freeglut
+            libglut
             pkgs.llvmPackages.openmp
+
+            glfw
+            glew
+            mesa
+            libGL
+            libglvnd
+            libGLU
           ];
 
           bin = "clang_base_dev_flake";
+
+          pythonPackages =
+            ps: with ps; [
+              opencv-python-headless
+              numpy
+            ];
+          pythonEnv = pkgs.python3.withPackages pythonPackages;
         in
         {
           packages.default = pkgs.clangStdenv.mkDerivation {
@@ -63,8 +80,9 @@
               compiledb
               autotools-language-server
 
-              python
+              python3
               pyright
+              pythonEnv
             ];
             BIN_NAME = bin;
           };
