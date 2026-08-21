@@ -1,4 +1,3 @@
-
 // GLUT/OpenGL viven en paquetes distintos segun el sistema operativo
 #if defined(__APPLE__)
 #include <GLUT/glut.h>
@@ -13,22 +12,17 @@
 #include "frames.h"
 
 #define DEFAULT_BAP_PATH "misc/bad_apple.bap"
-#define ZOOM 20
+#define ZOOM 12
 
 static Frames *g_frames = NULL;
 static unsigned char *g_framebuffer =
     NULL; /* cols * rows, 1 byte/pixel (luminancia) */
 static uint32_t g_frame_idx = 0;
 
-// ---------------------------------------------------------
-// CALCULO: arma el framebuffer del frame actual a partir del
-// patron de bits empacado en g_frames
-// ---------------------------------------------------------
 void construirFramebuffer() {
   uint32_t cols = g_frames->cols;
   uint32_t rows = g_frames->rows;
 
-#pragma omp parallel for schedule(dynamic)
   for (uint32_t y = 0; y < rows; y++) {
     for (uint32_t x = 0; x < cols; x++) {
       int on = frames_get_pixel(g_frames, g_frame_idx, x, y);
