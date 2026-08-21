@@ -1,12 +1,3 @@
-/* ------------------------------------------------------------------------
- * Universidad del Valle de Guatemala
- * Curso: CC3069 – Computación Paralela y Distribuida
- * Sección: 30
- * Fecha: 08/12/2026
- * Descripción: Screensaver que reproduce un archivo .bap (ver frames.h)
- *   armando un mini framebuffer en CPU por cada frame y volcándolo a
- *   pantalla con OpenGL/GLUT via glDrawPixels.
- * -------------------------------------------------------------------------*/
 
 // GLUT/OpenGL viven en paquetes distintos segun el sistema operativo
 #if defined(__APPLE__)
@@ -22,10 +13,11 @@
 #include "frames.h"
 
 #define DEFAULT_BAP_PATH "misc/bad_apple.bap"
-#define ZOOM 6
+#define ZOOM 20
 
 static Frames *g_frames = NULL;
-static unsigned char *g_framebuffer = NULL; /* cols * rows, 1 byte/pixel (luminancia) */
+static unsigned char *g_framebuffer =
+    NULL; /* cols * rows, 1 byte/pixel (luminancia) */
 static uint32_t g_frame_idx = 0;
 
 // ---------------------------------------------------------
