@@ -3,12 +3,18 @@
  * Curso: CC3069 – Computación Paralela y Distribuida
  * Sección: 30
  * Fecha: 08/12/2026
- * Descripción: ejemplo básico en OpenGL: dibujo de un triángulo con colores RGB
+ * Descripción: Prueba de concepto del screensaver. Crea una ventana con
+ *   OpenGL/GLUT y dibuja N partículas que se mueven y rebotan en los bordes.
  * -------------------------------------------------------------------------*/
 
-// this ar the apple headers for openGL BTWE
+// GLUT/OpenGL viven en paquetes distintos segun el sistema operativo
+#if defined(__APPLE__)
 #include <GLUT/glut.h>
 #include <OpenGL/gl.h>
+#else
+#include <GL/freeglut.h>
+#include <GL/gl.h>
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
