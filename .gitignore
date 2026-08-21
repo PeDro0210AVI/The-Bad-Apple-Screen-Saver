@@ -12,3 +12,8 @@ result/
 # for clangd
 .cache
 compile_commands.json
+
+# Video fuente (con derechos de autor) y datos extraidos de el.
+# No deben subirse al repo, que se hace publico el dia de entrega.
+misc/
+*.bap
